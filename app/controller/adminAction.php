@@ -4,8 +4,8 @@
     use biny\lib\TXLanguage;
     use TXApp;
 
-    class indexAction extends baseAction {
+    class adminAction extends baseAction {
         public function action_index() {
-            return $this->display('admin/index');
+            return $this->display('admin/index_v1');
         }
     }

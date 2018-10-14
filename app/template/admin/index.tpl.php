@@ -27,7 +27,7 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="/login">
+                        <a class="J_menuItem" href="/admin/index">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -417,7 +417,7 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="/index" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe id="J_iframe" width="100%" height="100%" src="/admin/index" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->

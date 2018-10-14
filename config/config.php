@@ -9,7 +9,7 @@ return array(
         'routeRule' => array(
 //            '<method:\w+>/test/<id:\d+>.html' => 'test/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
-            'index/index' => 'index',
+            'admin' => 'login',
         ),
     ),
 
