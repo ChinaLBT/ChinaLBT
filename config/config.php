@@ -2,14 +2,14 @@
 return array(
     //路由配置
     'router' => array(
-        'base_action' => 'login', //默认路由入口
+        'base_action' => 'admin', //默认路由入口
         'base_shell' => 'index', //默认shell入口
 
         //静态化配置
         'routeRule' => array(
 //            '<method:\w+>/test/<id:\d+>.html' => 'test/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
-            'admin' => 'login',
+            // 'admin' => 'admin/login',
         ),
     ),
 

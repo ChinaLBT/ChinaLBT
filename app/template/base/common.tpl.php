@@ -21,5 +21,6 @@
     <link href="<?=$webRoot?>/static/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=$webRoot?>/static/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="<?=$webRoot?>/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=$webRoot?>/static/css/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
 
 </head>

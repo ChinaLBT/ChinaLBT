@@ -21,18 +21,20 @@ class loginAction extends baseAction
         //    if (TXApp::$model->person->exist()){
         //        TXApp::$base->request->redirect('/');
         //    }
-        $username = $this->param('username');
-        if (!$username){
-            return $this->display('admin/login');
-        } else {
-            if ($username == TXApp::$model->login->index()) {
-                return $this->display('admin/index');
-            } else {
-                echo 'no';
-            }
+        // $username = $this->param('username');
+        // if (!$username){
+            // return $this->display('admin/login');
+        // } else {
+            TXApp::$model->login->index();
+            return print_r(TXApp::$model->login->index());
+                // TXApp::$base->session->user = '123';
+                // return true;
+            // } else {
+                // return false;
+            // }
             //    $view = $this->display('admin/login');
             //   return $view;
-        }
+        // }
         //        if ($user = $this->userDAO->filter(['name'=>$username])->find()){
         //            TXApp::$model->person($user['id'])->login();
         //        } else {

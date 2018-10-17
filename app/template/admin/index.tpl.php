@@ -35,30 +35,30 @@
                     <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">统计图表</span>
+                            <span class="nav-label">商品</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
+                                <a class="J_menuItem" href="graph_echarts.html">商品列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
+                                <a class="J_menuItem" href="graph_flot.html">商品分类</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
+                                <a class="J_menuItem" href="graph_morris.html">商品品牌</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
+                                <a class="J_menuItem" href="graph_rickshaw.html">商品标签</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
+                                <a class="J_menuItem" href="graph_peity.html">商品评价</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
+                                <a class="J_menuItem" href="graph_sparkline.html">商品规格模板</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
+                                <a class="J_menuItem" href="graph_metrics.html">商品属性模板</a>
                             </li>
                         </ul>
                     </li>
@@ -395,10 +395,11 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="/admin/exit">
                                         <div>
-                                            <i class="fa fa-qq fa-fw"></i> 3条新回复
-                                            <span class="pull-right text-muted small">12分钟钱</span>
+                                            退出登录
+                                            <!-- <i class="fa fa-qq fa-fw"></i> 3条新回复
+                                            <span class="pull-right text-muted small">12分钟钱</span> -->
                                         </div>
                                     </a>
                                 </li>
@@ -417,7 +418,7 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="/admin/index" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe id="J_iframe" width="100%" height="100%" src="/admin/home" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->
