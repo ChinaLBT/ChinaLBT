@@ -6,7 +6,7 @@
             <div class="col-sm-10">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="row row-sm text-center">
+                        <!-- <div class="row row-sm text-center">
                             <div class="col-xs-6">
                                 <div class="panel padder-v item">
                                     <div class="h1 text-info font-thin h1">521</div>
@@ -43,16 +43,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title" style="border-bottom:none;background:#fff;">
-                                <h5>服务器状态</h5>
+                                <h5>网站状态</h5>
                             </div>
-                            <div class="ibox-content" style="border-top:none;">
-                                <div id="flot-line-chart-moving" style="height:217px;">
-                                </div>
+                            <div class="ibox-content" style="border-top:none;height:200px;">
+                                
                             </div>
                         </div>
                     </div>

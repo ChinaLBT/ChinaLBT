@@ -27,7 +27,7 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="/admin/index">
+                        <a class="J_menuItem" href="/admin/home">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -330,13 +330,23 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
-                        <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
-                            <div class="form-group">
-                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
-                            </div>
-                        </form>
+                    <div class="navbar-header" style="width:80%;">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <div class="navbar-header col-sm-4" style="width:30%;">
+                            <div>当前版本：企业版v1.0.0</div>
+                        </div>
+                        <div class="navbar-header col-sm-4" style="width:30%;">
+                            <div>当前登录时间：2018/12/31 00:00:00</div>
+                            <div>当前登录IP：255.255.255.255</div>
+                        </div>
+                        <div class="navbar-header col-sm-4" style="width:30%;">
+                            <div>上次登录时间：2018/12/31 00:00:00</div>
+                            <div>上次登录IP：255.255.255.255</div>
+                        </div>
                     </div>
+                    
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
