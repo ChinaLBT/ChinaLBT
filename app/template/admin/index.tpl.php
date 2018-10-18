@@ -334,17 +334,13 @@
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <div class="navbar-header col-sm-4" style="width:30%;">
-                            <div>当前版本：企业版v1.0.0</div>
-                        </div>
-                        <div class="navbar-header col-sm-4" style="width:30%;">
+                        <div class="minimalize-styl-2 hidden-sm hidden-xs">当前版本：企业版v1.0.0</div>
+                        <!-- <div class="navbar-header col-sm-4" style="width:30%;">
                             <div>当前登录时间：2018/12/31 00:00:00</div>
                             <div>当前登录IP：255.255.255.255</div>
-                        </div>
-                        <div class="navbar-header col-sm-4" style="width:30%;">
-                            <div>上次登录时间：2018/12/31 00:00:00</div>
-                            <div>上次登录IP：255.255.255.255</div>
-                        </div>
+                        </div> -->
+                            <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录时间：<?=$PRM['last_login']?></div>
+                            <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录IP：<?=$PRM['last_ip']?></div>
                     </div>
                     
                     <ul class="nav navbar-top-links navbar-right">

@@ -19,14 +19,15 @@
                     //     return false;
                     // }
                     if (TXAPP::$model->login->index($username,$passwd)==1) {
-                        TXApp::$base->session->user = '123';
+                        TXApp::$base->session->user = $username;
                         return true;
                     } else {
                         return TXAPP::$model->login->index($username,$passwd);
                     }
                 }
             } else {
-                return $this->display('admin/index');
+                $last = TXApp::$model->admin->admin(TXApp::$base->session->user);
+                return $this->display('admin/index',$last);
             }
         }
 
@@ -34,6 +35,7 @@
             return $this->display('admin/index_v1');
         }
         public function action_exit() {
+            TXApp::$model->admin->exits(TXApp::$base->session->user);
             TXApp::$base->session->clear();
             return $this->display('admin/login');
         }

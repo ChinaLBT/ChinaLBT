@@ -13,8 +13,8 @@
                     return "密码错误!";
                 } else {
                     $this->userDAO
-                    ->filter(array('username'=>$username))
-                    ->update(array('last_login'=>time(),'last_ip'=>$_SERVER['REMOTE_ADDR']));
+                        ->filter(array('username'=>$username))
+                        ->update(array('now_login'=>time(),'now_ip'=>$_SERVER['REMOTE_ADDR']));
                     return true;
                 }
             } else {
