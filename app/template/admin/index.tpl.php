@@ -40,7 +40,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">商品列表</a>
+                                <a class="J_menuItem" href="/admin/goods">商品列表</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_flot.html">商品分类</a>

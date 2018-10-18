@@ -20,6 +20,7 @@
                     // }
                     if (TXAPP::$model->login->index($username,$passwd)==1) {
                         TXApp::$base->session->user = $username;
+                        // TXApp::$model->admin->exits(TXApp::$base->session->user);
                         return true;
                     } else {
                         return TXAPP::$model->login->index($username,$passwd);
@@ -38,5 +39,8 @@
             TXApp::$model->admin->exits(TXApp::$base->session->user);
             TXApp::$base->session->clear();
             return $this->display('admin/login');
+        }
+        public function action_goods() {
+            return $this->display('admin/goods');
         }
     }

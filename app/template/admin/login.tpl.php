@@ -41,9 +41,11 @@
                     // dataType: "dataType",
                     success: function (res) {
                         if (Number(res)) {
+                            console.log(res)
                             window.location.href='/admin'
                         } else {
-                            toastr.error(res,'错误')
+                            console.log(res)
+                            // toastr.error(res,'错误')
                         }
                     }
                 });

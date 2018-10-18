@@ -11,3 +11,6 @@
 <script src="<?=$webRoot?>/static/js/plugins/layer/layer.min.js"></script>
 <script src="<?=$webRoot?>/static/js/plugins/pace/pace.min.js"></script>
 <script src="<?=$webRoot?>/static/js/plugins/toastr/toastr.min.js"></script>
+<script src="<?=$webRoot?>/static/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="<?=$webRoot?>/static/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="<?=$webRoot?>/static/js/plugins/jeditable/jquery.jeditable.js"></script>

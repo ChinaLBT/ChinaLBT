@@ -22,5 +22,6 @@
     <link href="<?=$webRoot?>/static/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="<?=$webRoot?>/static/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="<?=$webRoot?>/static/css/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=$webRoot?>/static/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
 </head>
