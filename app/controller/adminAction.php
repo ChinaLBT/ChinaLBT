@@ -41,6 +41,7 @@
             return $this->display('admin/login');
         }
         public function action_goods() {
-            return $this->display('admin/goods');
+            $last = TXApp::$model->admin->admin(TXApp::$base->session->user);
+            return $this->display('admin/goods',$last);
         }
     }

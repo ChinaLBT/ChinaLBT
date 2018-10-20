@@ -1,6 +1,6 @@
-
 <?php include TXApp::$view_root . "/base/common.tpl.php" ?>
 <?php include TXApp::$view_root . "/base/header.tpl.php" ?>
+
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
         <!--左侧导航开始-->
@@ -67,7 +67,8 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span class="label label-warning pull-right">16</span></a>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span
+                                class="label label-warning pull-right">16</span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="mailbox.html">收件箱</a>
                             </li>
@@ -292,7 +293,7 @@
                             <li><a class="J_menuItem" href="table_foo_table.html">Foo Tables</a>
                             </li>
                             <li><a class="J_menuItem" href="table_bootstrap.html">Bootstrap Table
-                                <span class="label label-danger pull-right">推荐</span></a>
+                                    <span class="label label-danger pull-right">推荐</span></a>
                             </li>
                         </ul>
                     </li>
@@ -339,14 +340,24 @@
                             <div>当前登录时间：2018/12/31 00:00:00</div>
                             <div>当前登录IP：255.255.255.255</div>
                         </div> -->
-                            <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录时间：<?=$PRM['last_login']?></div>
-                            <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录IP：<?=$PRM['last_ip']?></div>
+                        <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录时间：
+                            <?=$PRM['last_login']?>
+                        </div>
+                        <div class="minimalize-styl-2 hidden-sm hidden-xs">上次登录IP：
+                            <?=$PRM['last_ip']?>
+                        </div>
                     </div>
-                    
+
                     <ul class="nav navbar-top-links navbar-right">
+                        <li title="退出登录">
+                            <a href="/admin/exit">
+                                <i class="glyphicon glyphicon-log-out"></i>
+                            </a>
+                        </li>
+
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+                                <i class="glyphicon glyphicon-remove-circle"></i> <span class="label label-warning">16</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
                                 <li class="m-t-xs">
@@ -424,7 +435,8 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="/admin/home" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe id="J_iframe" width="100%" height="100%" src="/admin/home" frameborder="0" data-id="index_v1.html"
+                    seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->
