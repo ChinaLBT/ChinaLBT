@@ -27,7 +27,7 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="/admin/home">
+                        <a class="J_menuItem" href="/index/home">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -35,12 +35,12 @@
                     <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">商品</span>
+                            <span class="nav-label">客户管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/admin/goods">商品列表</a>
+                                <a class="J_menuItem" href="/customer">个人客户</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_flot.html">商品分类</a>
@@ -350,7 +350,7 @@
 
                     <ul class="nav navbar-top-links navbar-right">
                         <li title="退出登录">
-                            <a href="/admin/exit">
+                            <a href="/index/exit">
                                 <i class="glyphicon glyphicon-log-out"></i>
                             </a>
                         </li>
@@ -412,7 +412,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="/admin/exit">
+                                    <a href="/index/exit">
                                         <div>
                                             退出登录
                                             <!-- <i class="fa fa-qq fa-fw"></i> 3条新回复
@@ -435,10 +435,18 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="/admin/home" frameborder="0" data-id="index_v1.html"
+                <iframe id="J_iframe" width="100%" height="100%" src="/customer" frameborder="0" data-id="index_v1.html"
                     seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->
     </div>
     <?php include TXApp::$view_root . "/base/footer.tpl.php" ?>
+    <script>
+        function beforeUnloadHandler(event){
+            $.ajax({
+                url: "/index/exit"
+            });
+        }
+        window.addEventListener('onbeforeunload',beforeUnloadHandler,true);
+    </script>

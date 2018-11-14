@@ -2,7 +2,7 @@
 return array(
     //路由配置
     'router' => array(
-        'base_action' => 'admin', //默认路由入口
+        'base_action' => 'index', //默认路由入口
         'base_shell' => 'index', //默认shell入口
 
         //静态化配置

@@ -4,13 +4,13 @@
     use biny\lib\TXLanguage;
     use TXApp;
 
-    class adminAction extends baseAction {
+    class indexAction extends baseAction {
         public function action_index() {
             if (!isset(TXApp::$base->session->user)) {
                 $username = $this->param('username');
                 $passwd = $this->param('passwd');
                 if (!$username){
-                    return $this->display('admin/login');
+                    return $this->display('index/login');
                 } else {
                     // if ($username == TXApp::$model->login->index()) {
                     //     TXApp::$base->session->user = '123';
@@ -20,28 +20,32 @@
                     // }
                     if (TXAPP::$model->login->index($username,$passwd)==1) {
                         TXApp::$base->session->user = $username;
-                        // TXApp::$model->admin->exits(TXApp::$base->session->user);
+                        // TXApp::$model->index->exits(TXApp::$base->session->user);
                         return true;
                     } else {
                         return TXAPP::$model->login->index($username,$passwd);
                     }
                 }
             } else {
-                $last = TXApp::$model->admin->admin(TXApp::$base->session->user);
-                return $this->display('admin/index',$last);
+                $last = TXApp::$model->index->index(TXApp::$base->session->user);
+                return $this->display('index/index',$last);
             }
         }
 
         public function action_home() {
-            return $this->display('admin/index_v1');
+            return $this->display('index/index_v1');
         }
         public function action_exit() {
-            TXApp::$model->admin->exits(TXApp::$base->session->user);
+            TXApp::$model->index->exits(TXApp::$base->session->user);
             TXApp::$base->session->clear();
-            return $this->display('admin/login');
+            return $this->display('index/login');
         }
-        public function action_goods() {
-            $last = TXApp::$model->admin->admin(TXApp::$base->session->user);
-            return $this->display('admin/goods',$last);
-        }
+        // public function action_customer_per() {
+        //     $array = array('name'=>'hello','id'=>'123456');
+        //     $array1 = array('name'=>'hello','id'=>'123456');
+        //     $array2 = array('name'=>'hello','id'=>'123456');
+        //     $aa = array($array,$array1,$array2);
+        //     // print_r($aa);
+        //     return $this->display('index/customer_per',$aa);
+        // }
     }

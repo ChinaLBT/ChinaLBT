@@ -33,7 +33,7 @@
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "/admin",
+                    url: "/index",
                     data: {
                         username: $("#username").val(),
                         passwd: $("#passwd").val()
@@ -41,7 +41,7 @@
                     // dataType: "dataType",
                     success: function (res) {
                         if (Number(res)) {
-                            window.location.href = '/admin'
+                            window.location.href = '/index'
                         } else {
                             toastr.error(res,'错误')
                         }

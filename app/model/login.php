@@ -6,7 +6,7 @@
         public function index($username,$passwd) {
             // $username = 'admin';
             // return $username;
-            $this->DAO = $this->userDAO;
+            // $this->DAO = $this->userDAO;
             $data = $this->userDAO->filter(array('username'=>$username))->query(array('username','passwd'));
             if($data) {
                 if ($passwd != $data[0]['passwd']) {
