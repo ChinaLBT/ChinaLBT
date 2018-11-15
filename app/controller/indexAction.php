@@ -20,6 +20,8 @@
                     // }
                     if (TXAPP::$model->login->index($username,$passwd)==1) {
                         TXApp::$base->session->user = $username;
+                        $data = $this->userDAO->filter(array('username'=>$username))->find('u_id');
+                        TXApp::$base->session->u_id = $data['u_id'];
                         // TXApp::$model->index->exits(TXApp::$base->session->user);
                         return true;
                     } else {

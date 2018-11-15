@@ -22,5 +22,29 @@
                 return 1;
             }
         }
+
+        public function readyShare($cus_id) {
+            $user_share = array();
+            $user = $this->userDAO->query(array('username','u_id'));
+            $u_id = $this->customerDAO
+                        ->filter(array('cus_id'=>$cus_id))
+                        ->find('u_id');
+            foreach($user as $value) {
+                if (strpos($u_id['u_id'],$value['u_id']) !== false) {
+                    $value['check']=true;
+                } else {
+                    $value ['check']=fales;
+                }
+                array_push($user_share,$value);
+            }
+            return json_encode($user_share);
+        }
+
+        public function share($cus_id,$u_id) {
+            $data = $this->customerDAO
+                    ->filter(array('cus_id'=>$cus_id))
+                    ->update(array('u_id'=>$u_id));
+            return $data;
+        }
     }
 ?>

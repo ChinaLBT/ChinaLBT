@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated bounceInRight">
@@ -52,12 +53,13 @@
                 </div><small class="font-bold">
                     <div class="modal-body">
                         <div class="text-center" id="cus_id" style="display:none;">
-                            
+
                         </div>
                         <p>
                             是一个完全响应式，基于Bootstrap3.3.6最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的jQuery插件，她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA等等，当然，您也可以对她进行深度定制，以做出更强系统。
                         </p>
-                        <div class="form-group"><label>密码</label> <input id="passwd" type="password" placeholder="请输入您的账户密码" class="form-control"></div>
+                        <div class="form-group"><label>密码</label> <input id="passwd" type="password" placeholder="请输入您的账户密码"
+                                class="form-control"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">取消删除</button>
@@ -69,10 +71,40 @@
         </div><small class="font-bold">
         </small>
     </div>
+    <div class="modal inmodal" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">关闭</span>
+                    </button>
+                    <i class="fa fa-laptop modal-icon"></i>
+                    <h4 class="modal-title">请仔细阅读</h4>
+                    <small class="font-bold">这里可以显示副标题。
+                    </small>
+                </div><small class="font-bold">
+                    <div class="modal-body">
+                        <p>
+                            是一个完全响应式，基于Bootstrap3.3.6最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的jQuery插件，她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA等等，当然，您也可以对她进行深度定制，以做出更强系统。
+                        </p>
+                        <div class="form-group"><label>密码</label>
+                            <div class="col-md-12" id="share"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消分享</button>
+                        <button type="button" class="btn btn-danger" onclick="share()">确认分享</button>
+                    </div>
+                </small>
+            </div><small class="font-bold">
+            </small>
+        </div><small class="font-bold">
+        </small>
+    </div>
     <div id="info"></div>
     <?php include TXApp::$view_root . "/base/footer.tpl.php" ?>
     <script>
-        var jsParam = <?=$PRM->json_encode()?>;
+        var jsParam = <?= $PRM -> json_encode() ?>;
         console.log(jsParam);
         $.each(jsParam, function (i, item) {
             var text = '<div class="faq-item">';
@@ -85,7 +117,7 @@
             text += '<div class="name_img">' + item.name.substr(0, 1) + '</div>';
             text += '</div>';
             text += '<div class="col-md-2">';
-            text += '<div class="text">' + item.name + '</div>';
+            text += '<div class="text">' + item.name.substr(0, 20) + '</div>';
             text += '</div>';
             text += '<div class="col-md-2">';
             text += '<span class="text">' + item.phone + '</span>';
@@ -96,9 +128,9 @@
             text += '</a>';
             text += '<div class="col-md-3">';
             text += '<div style="line-height:50px;">';
-            text += '<button class="btn btn-info" type="button"><i class="fa fa-paste"></i>编辑</button>';
-            text += '<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" onclick="readyDel('+item.cus_id+');"><i class="fa fa-warning"></i>删除</button>';
-            text += '<button class="btn btn-success" type="button"><i class="fa fa-upload"></i>分享</button>';
+            text += '<button class="btn btn-info" type="button" onclick="edit(' + item.cus_id + ');"><i class="fa fa-paste"></i>编辑</button>';
+            text += '<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" onclick="readyDel(' + item.cus_id + ');"><i class="fa fa-warning"></i>删除</button>';
+            text += '<button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal1" onclick="readyShare(' + item.cus_id + ');"><i class="fa fa-upload"></i>分享</button>';
             text += '</div>';
             text += '</div>';
             text += '</div>';
@@ -119,6 +151,36 @@
         function readyDel(cus_id) {
             $("#cus_id").text(cus_id);
         }
+        function edit(cus_id) {
+            window.location.href="/customer/edit?cus_id="+cus_id;
+        }
+        function readyShare(cus_id) {
+            $("#cus_id").text(cus_id);
+            $("#share").children().remove();
+            $.ajax({
+                type: "POST",
+                url: "/customer/readyShare",
+                data:{cus_id:cus_id},
+                dataType: "json",
+                success: function (res) {
+                    
+                    console.log(res)
+                    $.each(res, function (i, item) {
+                        // console.log(item.username)
+                        var check = '';
+                        if(item.check == true) {
+                            // $("input[type='checkbox']").prop("checked", true);
+                            check = "checked";
+                        }
+                        var select = '<div class="col-md-3">';
+                        select += '<label class="checkbox-inline">';
+                        select += '<input type="checkbox"'+check+' value="option1" id="' + item.u_id + '">' + item.username + '</label>';
+                        select += '</div>';
+                        $("#share").append(select);
+                    })
+                }
+            });
+        }
         function Del() {
             var cus_id = $("#cus_id").text();
             console.log(cus_id);
@@ -126,11 +188,42 @@
                 type: "POST",
                 url: "/customer/del",
                 data: {
-                    passwd:$("#passwd").val(),
-                    cus_id:cus_id
+                    passwd: $("#passwd").val(),
+                    cus_id: cus_id
                 },
                 success: function (res) {
-                    console.log(res);
+                    if (res == 1) {
+                        location = location;
+                    } else {
+                        console.log(res);
+                        toastr.error(res, '错误')
+                    }
+                }
+            });
+        }
+        function share() {
+            var u_id = '';
+            var cus_id = $("#cus_id").text();
+            $("input[type='checkbox']").each(function() {
+                var check = $(this).is(':checked')
+                if (check) {
+                    var isTure=$(this).attr("id");
+                    u_id = isTure +','+ u_id ;
+                }
+            })
+            // console.log($("input[type='checkbox']").is(':checked'))
+            console.log(cus_id)
+            $.ajax({
+                type: "POST",
+                url: "/customer/share",
+                data: {
+                    cus_id:cus_id,
+                    u_id:u_id
+                },
+                success: function (res) {
+                    if(res==1) {
+                        location=location;
+                    }
                 }
             });
         }
