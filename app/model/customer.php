@@ -4,8 +4,30 @@
 
     class customer extends baseModel {
         public function add($info) {
-            $res = $this->customerDAO->add($info,false);
-            return $res;
+            $data = $this->customerDAO
+                        ->filter(array('cus_id'=>$info['cus_id']))
+                        ->query();
+            if($data) {
+                $res = $this->customerDAO
+                            ->filter(array('cus_id'=>$info['cus_id']))
+                            ->update(
+                                array(
+                                    'name' => $info['name'],
+                                    'phone' => $info['phone'],
+                                    'grade' => $info['grade'],
+                                    'address' => $info['address'],
+                                    'degree' => $info['degree'],
+                                    'sex' => $info['sex'],
+                                    'time' => $info['time'],
+                                    'remark' => $info['remark'],
+                                    'u_id' => $info['u_id']
+                                    )
+                            );
+                return $res;
+            } else {
+                $res = $this->customerDAO->add($info,false);
+                return $res;
+            }
         }
 
         public function del($cus_id) {

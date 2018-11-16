@@ -38,7 +38,12 @@
             </div>
         </div>
     </div>
-
+    <div class="input-group" style="margin:10px;">
+        <input type="text" id="search" class="form-control">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary">搜索</button>
+        </span>
+    </div>
     <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated bounceInRight">
@@ -102,9 +107,53 @@
         </small>
     </div>
     <div id="info"></div>
+    <div class="col-md-12 text-center">
+        <div class="btn-group">
+            <button type="button" id="pages_left" class="btn btn-white"><i class="fa fa-chevron-left"></i>
+            </button>
+            <!-- <button class="btn btn-white active">1</button> -->
+            <!-- <b id="pages"></b> -->
+            <button type="button" id="pages_right" class="btn btn-white"><i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
     <?php include TXApp::$view_root . "/base/footer.tpl.php" ?>
     <script>
+        $("#search").focus(function () {
+            search()
+        })
+        function search() {
+            var seach = setInterval(function () {
+                console.log("ok")
+            }, 1000);
+            $("#search").blur(function () {
+                clearInterval(seach);
+            })
+        }
         var jsParam = <?= $PRM -> json_encode() ?>;
+        $.ajax({
+            type: "GET",
+            url: "/customer/pages",
+            success: function (res) {
+                // console.log(res);
+                for (var page = 1; page <= res; page++) {
+                    var pages = '<button class="btn btn-white" id="page_num' + (page - 1) + '" onclick="pages(' + (page - 1) + ');">' + page + '</button>';
+                    $("#pages_right").before(pages);
+                }
+                if (jsParam.page == null) {
+                    jsParam.page = 0;
+                }
+                $("#page_num" + jsParam.page).addClass('active');
+                // delete jsParam['page']
+                console.log(jsParam.page)
+
+            }
+        });
+        function pages(page) {
+            // console.log(page)
+            window.location.href = "/customer/index?pages=" + page;
+        }
         console.log(jsParam);
         $.each(jsParam, function (i, item) {
             var text = '<div class="faq-item">';
@@ -152,7 +201,7 @@
             $("#cus_id").text(cus_id);
         }
         function edit(cus_id) {
-            window.location.href="/customer/edit?cus_id="+cus_id;
+            window.location.href = "/customer/edit?cus_id=" + cus_id;
         }
         function readyShare(cus_id) {
             $("#cus_id").text(cus_id);
@@ -160,21 +209,21 @@
             $.ajax({
                 type: "POST",
                 url: "/customer/readyShare",
-                data:{cus_id:cus_id},
+                data: { cus_id: cus_id },
                 dataType: "json",
                 success: function (res) {
-                    
+
                     console.log(res)
                     $.each(res, function (i, item) {
                         // console.log(item.username)
                         var check = '';
-                        if(item.check == true) {
+                        if (item.check == true) {
                             // $("input[type='checkbox']").prop("checked", true);
                             check = "checked";
                         }
                         var select = '<div class="col-md-3">';
                         select += '<label class="checkbox-inline">';
-                        select += '<input type="checkbox"'+check+' value="option1" id="' + item.u_id + '">' + item.username + '</label>';
+                        select += '<input type="checkbox"' + check + ' value="option1" id="' + item.u_id + '">' + item.username + '</label>';
                         select += '</div>';
                         $("#share").append(select);
                     })
@@ -204,11 +253,11 @@
         function share() {
             var u_id = '';
             var cus_id = $("#cus_id").text();
-            $("input[type='checkbox']").each(function() {
+            $("input[type='checkbox']").each(function () {
                 var check = $(this).is(':checked')
                 if (check) {
-                    var isTure=$(this).attr("id");
-                    u_id = isTure +','+ u_id ;
+                    var isTure = $(this).attr("id");
+                    u_id = isTure + ',' + u_id;
                 }
             })
             // console.log($("input[type='checkbox']").is(':checked'))
@@ -217,12 +266,12 @@
                 type: "POST",
                 url: "/customer/share",
                 data: {
-                    cus_id:cus_id,
-                    u_id:u_id
+                    cus_id: cus_id,
+                    u_id: u_id
                 },
                 success: function (res) {
-                    if(res==1) {
-                        location=location;
+                    if (res == 1) {
+                        location = location;
                     }
                 }
             });

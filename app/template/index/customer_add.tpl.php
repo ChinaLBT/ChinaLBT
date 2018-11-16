@@ -71,20 +71,33 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-8 col-sm-offset-3">
-                    <button class="btn btn-primary" type="button" id="add">提交</button>
+                <div class="col-sm-8 col-sm-offset-3 col-sm-4">
+                    <div id="add_edit"><button class="btn btn-primary" type="button" id="add">提交</button></div>
                 </div>
+                <div class="col-sm-8 col-sm-3">
+                        <button class="btn btn-primary" type="button" onclick="history(-1)">取消</button>
+                    </div>
             </div>
         </form>
     </div>
     <?php include TXApp::$view_root . "/base/footer.tpl.php" ?>
     <script>
         var jsParam = <?= $PRM -> json_encode() ?>;
-        console.log(jsParam)
-        if(jsParam != '') {
-                $("#name").val(jsParam.[0].name);
-        }
+        var cus_id = '';
         Share();
+        if(jsParam != '') {
+                // $("#add").remove();
+                // var edit = '<button class="btn btn-primary" type="button" id="edit">提交</button>';
+                // $("#add_edit").append(edit);
+                $("#name").val(jsParam[0].name);
+                $("#phone").val(jsParam[0].phone);
+                $("#grade").val(jsParam[0].grade);
+                $("#address").val(jsParam[0].address);
+                $("#degree").val(jsParam[0].degree);
+                $("#time").val(jsParam[0].time);
+                $("#remark").val(jsParam[0].remark);
+                cus_id = jsParam[0].cus_id
+        }
         $("#add").click(function () {
             var u_id = '';
             $("input[type='checkbox']").each(function() {
@@ -101,6 +114,7 @@
                 type: "POST",
                 url: "/customer/addInfo",
                 data: {
+                    cus_id:cus_id,
                     name: $("#name").val(),
                     phone: $("#phone").val(),
                     grade: $("#grade").val(),
@@ -119,10 +133,13 @@
         function Share() {
             // $("#cus_id").text(cus_id);
             // $("#share").children().remove();
+            // var add = '<button class="btn btn-primary" type="button" id="add">提交</button>';
+            // $("#add_edit").append(add);
+            $
             $.ajax({
                 type: "POST",
                 url: "/customer/readyShare",
-                // data:{cus_id:cus_id},
+                data:{cus_id:cus_id},
                 dataType: "json",
                 success: function (res) {
                     

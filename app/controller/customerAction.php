@@ -6,9 +6,13 @@
 
     class customerAction extends baseAction {
         public function action_index() {
+            $pages = $this->param('pages')*2;
             $data = $this->customerDAO
             ->filter(array('__like__'=>array('u_id'=>TXApp::$base->session->u_id)))
+            ->order(array('id'=>'DESC'))
+            ->limit(2,$pages) //limit(条数，起始位置（默认为0）)
             ->query(array('cus_id','name','phone','grade','address','degree','sex','time','remark'),'cus_id');
+            $data['page'] = $this->param('pages');
             return $this->display('index/customer_per',$data);
         }
 
@@ -17,7 +21,13 @@
         }
 
         public function action_addInfo() {
-            $cus_id = time().rand(1000,9999);
+            if($this->param('cus_id') == '') {
+                $cus_id = time().rand(1000,9999);
+                $u_id = TXApp::$base->session->u_id;
+            } else {
+                $cus_id = $this->param('cus_id');
+                $u_id = $this->param('u_id');
+            }
             $info = array(
                 'cus_id'=>$cus_id,
                 'name'=>$this->param('name'),
@@ -28,7 +38,7 @@
                 'sex'=>$this->param('sex'),
                 'time'=>$this->param('time'),
                 'remark'=>$this->param('remark'),
-                'u_id' =>TXApp::$base->session->u_id
+                'u_id' =>$u_id
             );
             return TXApp::$model->customer->add($info);
         }
@@ -60,9 +70,15 @@
         public function action_edit($cus_id) {
             $data = $this->customerDAO
             ->filter(array('cus_id'=>$cus_id))
-            ->query(array('name','phone','grade','address','degree','sex','time','remark'));
-            print_r($data);
+            ->query(array('cus_id','name','phone','grade','address','degree','sex','time','remark'));
+            // print_r($data);
             return $this->display('index/customer_add',$data);
+        }
+
+        public function action_pages() {
+            $pages = $this->customerDAO->count();
+            $pages = ceil($pages/2);
+            return $pages;
         }
     }
 ?>
